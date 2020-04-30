@@ -1,0 +1,18 @@
+{
+    "name": "http://localhost:3978/api/messages",
+    "description": "",
+    "services": [
+        {
+            "type": "endpoint",
+            "appId": "",
+            "appPassword": "",
+            "endpoint": "http://localhost:3978/api/messages",
+            "id": "52a49760-8a95-11ea-a821-ab94ef40c9b6",
+            "name": "http://localhost:3978/api/messages"
+        }
+    ],
+    "padlock": "",
+    "version": "2.0",
+    "path": "C:\\s\\pj\\igrep-teams-sample\\httplocalhost3978apimessages.bot",
+    "overrides": null
+}
