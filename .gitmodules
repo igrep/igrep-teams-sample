@@ -1,0 +1,3 @@
+[submodule "restify-cookie-session"]
+	path = restify-cookie-session
+	url = https://github.com/igrep/restify-cookie-session.git
