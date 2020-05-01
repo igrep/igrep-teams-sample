@@ -7,6 +7,7 @@
     "main": "index.js",
     "scripts": {
         "start": "node ./index.js",
+        "debug": "node --inspect ./index.js",
         "watch": "nodemon ./index.js",
         "lint": "eslint .",
         "test": "echo \"Error: no test specified\" && exit 1"
@@ -16,9 +17,16 @@
         "url": "https://github.com"
     },
     "dependencies": {
+        "@microsoft/microsoft-graph-client": "^2.0.0",
         "botbuilder": "~4.6.1",
         "dotenv": "^8.2.0",
-        "restify": "~8.4.0"
+        "isomorphic-fetch": "^2.2.1",
+        "moment": "^2.25.0",
+        "passport-azure-ad": "^4.2.1",
+        "passport-restify": "^1.0.1",
+        "restify": "~8.4.0",
+        "restify-cookie-session": "./restify-cookie-session",
+        "simple-oauth2": "^3.4.0"
     },
     "devDependencies": {
         "eslint": "^6.6.0",

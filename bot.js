@@ -18,7 +18,7 @@ class EchoBot extends ActivityHandler {
             const membersAdded = context.activity.membersAdded;
             for (let cnt = 0; cnt < membersAdded.length; ++cnt) {
                 if (membersAdded[cnt].id !== context.activity.recipient.id) {
-                    await context.sendActivity('Hello and welcome!');
+                    await context.sendActivity('Hello and welcome! http://localhost:3978/auth/signin');
                 }
             }
             // By calling next() you ensure that the next BotHandler is run.
