@@ -1,40 +1,38 @@
 {
-    "name": "echobot",
-    "version": "1.0.0",
-    "description": "Bot Builder v4 echo bot sample",
-    "author": "Microsoft",
-    "license": "MIT",
-    "main": "index.js",
-    "scripts": {
-        "start": "node ./index.js",
-        "debug": "node --inspect ./index.js",
-        "watch": "nodemon ./index.js",
-        "lint": "eslint .",
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com"
-    },
-    "dependencies": {
-        "@microsoft/microsoft-graph-client": "^2.0.0",
-        "botbuilder": "~4.6.1",
-        "dotenv": "^8.2.0",
-        "isomorphic-fetch": "^2.2.1",
-        "moment": "^2.25.0",
-        "passport-azure-ad": "^4.2.1",
-        "passport-restify": "^1.0.1",
-        "restify": "~8.4.0",
-        "restify-cookie-session": "./restify-cookie-session",
-        "simple-oauth2": "^3.4.0"
-    },
-    "devDependencies": {
-        "eslint": "^6.6.0",
-        "eslint-config-standard": "^14.1.0",
-        "eslint-plugin-import": "^2.18.2",
-        "eslint-plugin-node": "^10.0.0",
-        "eslint-plugin-promise": "^4.2.1",
-        "eslint-plugin-standard": "^4.0.1",
-        "nodemon": "~1.19.4"
-    }
+  "name": "graph-tutorial",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "debug": "node --inspect ./bin/www",
+    "watch": "nodemon ./bin/www",
+    "lint": "eslint .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@microsoft/microsoft-graph-client": "^2.0.0",
+    "botbuilder": "~4.6.1",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "dotenv": "^8.2.0",
+    "express": "~4.16.1",
+    "express-session": "^1.17.0",
+    "hbs": "^4.1.1",
+    "http-errors": "~1.6.3",
+    "isomorphic-fetch": "^2.2.1",
+    "moment": "^2.24.0",
+    "morgan": "~1.9.1",
+    "passport-azure-ad": "^4.2.1",
+    "simple-oauth2": "^3.3.0"
+  },
+  "devDependencies": {
+    "eslint": "^6.6.0",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "nodemon": "~1.19.4"
+  }
 }
