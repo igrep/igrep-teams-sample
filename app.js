@@ -177,14 +177,14 @@ app.use('/calendar', calendarRouter);
 app.use('/users', usersRouter);
 
 const p = (hd, o) => {
-  console.log(hd, o);
+  console.log(hd, o, "\n");
   return o;
 };
 
 // See https://aka.ms/about-bot-adapter to learn more about how bots work.
 const adapter = new BotFrameworkAdapter({
-  appId: p('OAUTH_APP_ID', process.env.OAUTH_APP_ID),
-  appPassword: p('OAUTH_APP_PASSWORD', process.env.OAUTH_APP_PASSWORD),
+  appId: p('MicrosoftAppId: ', process.env.MicrosoftAppId),
+  appPassword: p('MicrosoftAppPassword: ', process.env.MicrosoftAppPassword),
   channelService: process.env.ChannelService,
   openIdMetadata: process.env.BotOpenIdMetadata
 });
