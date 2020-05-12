@@ -3,9 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
-    "debug": "node --inspect ./bin/www",
-    "watch": "nodemon ./bin/www",
+    "start": "node ./index.js",
+    "debug": "node --inspect ./index.js",
+    "watch": "nodemon ./index.js",
     "lint": "eslint .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
