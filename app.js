@@ -178,8 +178,8 @@ app.use('/users', usersRouter);
 
 // See https://aka.ms/about-bot-adapter to learn more about how bots work.
 const adapter = new BotFrameworkAdapter({
-  appId: process.env.MicrosoftAppId,
-  appPassword: process.env.MicrosoftAppPassword,
+  appId: process.env.OAUTH_APP_ID,
+  appPassword: process.env.OAUTH_APP_PASSWORD,
   channelService: process.env.ChannelService,
   openIdMetadata: process.env.BotOpenIdMetadata
 });
