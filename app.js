@@ -71,6 +71,7 @@ async function signInComplete(iss, sub, profile, accessToken, refreshToken, para
 
   // Save the profile and tokens in user storage
   users[profile.oid] = { profile, oauthToken };
+  console.log(JSON.stringify(profile));
   return done(null, users[profile.oid]);
 }
 // </SignInCompleteSnippet>
