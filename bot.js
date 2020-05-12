@@ -20,7 +20,7 @@ class EchoBot extends ActivityHandler {
         if (membersAdded[cnt].id !== context.activity.recipient.id) {
           let memberAdded = membersAdded[cnt];
           console.log(`onMembersAdded: #${memberAdded.aadObjectId}: ${memberAdded.name}`);
-          await context.sendActivity(`こんにちは、${memberAdded.name}さん! http://localhost:3978 からMicrosoftアカウントでログインしてください！`);
+          await context.sendActivity(`こんにちは、${memberAdded.name}さん! ${process.env.OAUTH_LANDING_URI} からMicrosoftアカウントでログインしてください！`);
         }
       }
       // By calling next() you ensure that the next BotHandler is run.
