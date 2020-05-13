@@ -2,12 +2,15 @@
 // Licensed under the MIT License.
 
 const { ActivityHandler } = require('botbuilder');
+const users = require('./users');
 
 class EchoBot extends ActivityHandler {
   constructor() {
     super();
     // See https://aka.ms/about-bot-activity-message to learn more about the message and other activity types.
     this.onMessage(async (context, next) => {
+      console.info(`onMessage: ${JSON.stringify(context.activity)}\n`);
+      users.dump();
       await context.sendActivity(`YOU SAID **${ context.activity.text.toUpperCase() }** at ${new Date()}`);
 
       // By calling next() you ensure that the next BotHandler is run.

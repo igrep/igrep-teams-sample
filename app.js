@@ -18,18 +18,18 @@ var OIDCStrategy = require('passport-azure-ad').OIDCStrategy;
 // In-memory storage of logged-in users
 // For demo purposes only, production apps should store
 // this in a reliable storage
-var users = {};
+const users = require('./users');
 
 // Passport calls serializeUser and deserializeUser to
 // manage users
 passport.serializeUser(function(user, done) {
   // Use the OID property of the user as a key
-  users[user.profile.oid] = user;
+  users.addUser(user);
   done (null, user.profile.oid);
 });
 
 passport.deserializeUser(function(id, done) {
-  done(null, users[id]);
+  done(null, users.lookup(id));
 });
 
 // <ConfigureOAuth2Snippet>
@@ -70,9 +70,9 @@ async function signInComplete(iss, sub, profile, accessToken, refreshToken, para
   let oauthToken = oauth2.accessToken.create(params);
 
   // Save the profile and tokens in user storage
-  users[profile.oid] = { profile, oauthToken };
+  users.addProfileAndToken(profile, oauthToken);
   console.log(JSON.stringify(profile));
-  return done(null, users[profile.oid]);
+  return done(null, users.lookup(profile.oid));
 }
 // </SignInCompleteSnippet>
 
