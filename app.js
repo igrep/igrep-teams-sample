@@ -166,24 +166,22 @@ app.use(function(req, res, next) {
 });
 // </AddProfileSnippet>
 //
-// Import required bot services.
-// See https://aka.ms/bot-services to learn more about the different parts of a bot.
-const { BotFrameworkAdapter } = require('botbuilder');
-const { EchoBot } = require('./bot');
-
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
 app.use('/calendar', calendarRouter);
 app.use('/users', usersRouter);
 
+
+// Import required bot services.
+// See https://aka.ms/bot-services to learn more about the different parts of a bot.
+const { BotFrameworkAdapter, ConversationState, MemoryStorage, UserState } = require('botbuilder');
+const { Bot } = require('./bot');
+const { Dialog } = require('./dialog');
+
 // See https://aka.ms/about-bot-adapter to learn more about how bots work.
-console.log(process.env.MicrosoftAppId);
-console.log(process.env.MicrosoftAppPassword);
 const adapter = new BotFrameworkAdapter({
   appId: process.env.MicrosoftAppId,
-  appPassword: process.env.MicrosoftAppPassword,
-  channelService: process.env.ChannelService,
-  openIdMetadata: process.env.BotOpenIdMetadata
+  appPassword: process.env.MicrosoftAppPassword
 });
 
 // Catch-all for errors.
@@ -191,7 +189,7 @@ adapter.onTurnError = async (context, error) => {
   // This check writes out errors to console log .vs. app insights.
   // NOTE: In production environment, you should consider logging this to Azure
   //       application insights.
-  console.error(`\n [onTurnError] unhandled error: ${ error }`);
+  console.error(`\n [onTurnError] unhandled error: ${error.stack}`);
 
   // Send a trace activity, which will be displayed in Bot Framework Emulator
   await context.sendTraceActivity(
@@ -206,8 +204,20 @@ adapter.onTurnError = async (context, error) => {
   await context.sendActivity('To continue to run this bot, please fix the bot source code.');
 };
 
+// Define a state store for your bot. See https://aka.ms/about-bot-state to learn more about using MemoryStorage.
+// A bot requires a state store to persist the dialog and user state between messages.
+
+// For local development, in-memory storage is used.
+// CAUTION: The Memory Storage used here is for local bot debugging only. When the bot
+// is restarted, anything stored in memory will be gone.
+const memoryStorage = new MemoryStorage();
+const conversationState = new ConversationState(memoryStorage);
+const userState = new UserState(memoryStorage);
+
+const dialog = new Dialog();
+
 // Create the main dialog.
-const myBot = new EchoBot();
+const myBot = new Bot(conversationState, userState, dialog);
 
 // Listen for incoming requests.
 app.post('/api/messages', (req, res) => {
